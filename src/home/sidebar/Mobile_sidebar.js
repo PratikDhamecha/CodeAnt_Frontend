@@ -2,11 +2,12 @@ import { Book, ChevronDown, Cloud, LogOut, Phone, Settings, Menu, X } from "luci
 import { useState } from "react";
 import { Home, Code } from "lucide-react";
 import codeAnt from "../../assets/DarkSubtract.png";
+import { useNavigate } from "react-router-dom";
 
 function MobileSidebar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const name = "UtkarshDhairyaPanwar";
-
+    const navigate = useNavigate();
     const navigation = [
         { icon: <Home /> , name: "Repositories" },
         { icon: <Code />, name: "AI Code Review" },
@@ -81,7 +82,8 @@ function MobileSidebar() {
                             {/* Bottom Navigation */}
                             <div className="flex flex-col gap-4">
                                 {bottomNavigation.map((item, index) => (
-                                    <div className={`flex flex-row gap-4 items-center text-sm sm:text-base leading-none cursor-pointer font-bold text-gray-600 bg-white`} key={index}>
+                                    <div className={`flex flex-row gap-4 items-center text-sm sm:text-base leading-none cursor-pointer font-bold text-gray-600 bg-white`} 
+                                        onClick={() => item.name === 'Logout' ? navigate('/') : navigate()} key={index}>
                                         {item.icon}
                                         <div>{item.name}</div>
                                     </div>

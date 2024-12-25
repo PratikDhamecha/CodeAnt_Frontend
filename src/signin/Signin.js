@@ -7,11 +7,14 @@ import Azure from '../assets/Azure.png';
 import GitLab from '../assets/GitLab.png';
 import key from '../assets/key.png';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function Signin() {
     const [activeButton, setActiveButton] = useState("SAAS");
     var options = [];
 
+    const navigate = useNavigate();
+ 
     const handleToggle = (button) => {
         setActiveButton(button);
     };
@@ -65,6 +68,9 @@ function Signin() {
                     className="flex gap-4 justify-center items-center py-4 max-w-full bg-white rounded-lg border border-gray-300 border-solid w-[446px] max-md:px-5"
                     role="button"
                     tabIndex={0}
+                    onClick={() => {
+                        navigate('/home')
+                    }}
                 >
                     <img
                         loading="lazy"
@@ -84,6 +90,9 @@ function Signin() {
                     className="flex gap-4 justify-center items-center py-4 max-w-full bg-white rounded-lg border border-gray-300 border-solid w-[446px] max-md:px-5"
                     role="button"
                     tabIndex={0}
+                    onClick={() => {
+                        navigate('/home')
+                    }}
                 >
                     <img
                         loading="lazy"
@@ -159,7 +168,6 @@ function Signin() {
                                 {options}
                             </div>
                         </div>
-
                         {/* Third Section */}
                         <div className="flex flex-row justify-center items-center w-full mt-4 text-sm">
                             <p className="text-center">

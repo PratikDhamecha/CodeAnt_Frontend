@@ -2,17 +2,19 @@ import { Book, ChevronDown, Cloud, LogOut, Phone, Settings } from "lucide-react"
 import { useState } from "react";
 import { Home, Code, } from "lucide-react";
 import codeant from "../../assets/DarkSubtract.png"
+import { useNavigate } from "react-router-dom";
 
 
 function Sidebar() {
     const [selectedNavigation, setSelectedNavigation] = useState("Repositories");
     const name = "utkarshDairyaPanwar"
+    const navigate = useNavigate()
     const navigation = [
         { icon: <Home /> , name: "Repositories" },
         { icon: <Code />, name: "AI Code Review" },
         { icon: <Cloud />, name: "Cloud Security" },
         { icon: <Book />, name: "How to Use" },
-        { icon: <Settings />, name: "Settings" },
+        { icon: <Settings />, name: "Settings"  },
     ];
 
     const bottomNavigation = [
@@ -34,7 +36,7 @@ function Sidebar() {
     const bottomNavigationItem = bottomNavigation.map((item, index) => {
         return (
             <div className={`flex flex-row gap-4 items-center text-sm sm:text-base leading-none border cursor-pointer border-gray-200 border-solid p-2 rounded-lg text-gray-600 bg-white`}
-                onClick={() => setSelectedNavigation(item.name)} key={index}>
+            onClick={() => item.name === 'Logout' ? navigate('/') : navigate()} key={index}>
                 {item.icon}
                 <div>{item.name}</div>
             </div>
